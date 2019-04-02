@@ -1,0 +1,7 @@
+ <div *ngIf="!success">
+   <div style="text-align: center">
+     <input type="text" [(ngModel)]="login.username" placeholder="username"><br>
+     <input type="password" [(ngModel)]="login.password" placeholder="password"><br>
+     <button (click)="LoginUser()">Login</button>
+   </div>
+ </div>
