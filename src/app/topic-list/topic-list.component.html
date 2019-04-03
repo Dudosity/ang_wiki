@@ -1,7 +1,23 @@
 
-  <!--Ниже элемент, скопипащеный с codepen-->
-<div class="sidebar">
-  <li *ngFor="let company of topic[0].company">{{company.title}}</li>
-
-
-  </div>
+<div class="container sidebar overflow-auto " style="padding-right: 0px; padding-top: 2px" >
+  <ul style="padding-left: 5px; padding-right: 0px">
+    <li class="text-break parent "  *ngFor="let comp of topic[0].company" style="alignment: left; margin-left: 0px; padding-left: 0px; padding-right: 0
+; margin-right: 5px">
+      <div class="w-auto rounded-lg shadow-sm list-item ">{{comp.title}}</div>
+      <ul >
+        <li class="text-break parent" *ngFor="let th of comp.threads">
+          <div class="list-item">
+            {{th.title}}
+          </div>
+          <ul >
+            <li style="font-size: smaller "  class="text-break" *ngFor="let art of th.articles">
+              <div class="list-item">
+                {{art.title}}
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

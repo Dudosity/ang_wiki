@@ -1,3 +1,25 @@
-.sidebar {
-  min-height: 100%;
+.list-item {
+  alignment: left;
+  margin-left: 0px;
+  padding-left: 0px;
+  line-height: 30px;
+  cursor: pointer;
+  display: block;
+  color: #5a5a5a;
+  transition: background 0.2s;
+  position: relative;
+  font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.list-item:hover {
+  background-color: skyblue;
+
+}
+
+
+ul ul {
+  margin-left: 0px;
+  padding-left: 7px;
 }
