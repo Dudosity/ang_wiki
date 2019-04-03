@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../user.service';
 import {User} from '../user';
+import {TopicListComponent} from '../topic-list/topic-list.component';
 
 @Component({
   selector: 'app-login',
@@ -35,6 +36,7 @@ export class LoginComponent implements OnInit {
         alert('User ' + this.login.username + ' has been login!' + this.request);
         console.log('Token = ' + User.token);
         console.log('SuccesLogin' + User.SuccessLogin);
+        this.Auth.ShowTopic();
 
       },
       error => console.log('error', error)
