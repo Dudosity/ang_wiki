@@ -24,14 +24,16 @@ export class LoginComponent implements OnInit {
   LoginUser() {
     this.Auth.AuthUser(this.login).subscribe(
       response => {
+        // JSON.stringify(product) ;
         this.request = response;
+        User.data = response;
         User.username = this.login.username;
-        User.token = "token " + response.token;
+        User.token = 'token ' + response.token;
         User.SuccessLogin = true;
         this.success = true;
-        alert('User ' + this.login.username + ' has been login!'+ this.request);
-        console.log("Token = " + User.token);
-        console.log("SuccesLogin" + User.SuccessLogin);
+        alert('User ' + this.login.username + ' has been login!' + this.request);
+        console.log('Token = ' + User.token);
+        console.log('SuccesLogin' + User.SuccessLogin);
 
       },
       error => console.log('error', error)
