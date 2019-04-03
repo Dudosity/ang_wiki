@@ -28,15 +28,14 @@ export class LoginComponent implements OnInit {
       response => {
         // JSON.stringify(product) ;
         this.request = response;
-        User.data = response;
         User.username = this.login.username;
         User.token = 'token ' + response.token;
+        this.Auth.ShowTopic();
         User.SuccessLogin = true;
         this.success = true;
         alert('User ' + this.login.username + ' has been login!' + this.request);
         console.log('Token = ' + User.token);
         console.log('SuccesLogin' + User.SuccessLogin);
-        this.Auth.ShowTopic();
 
       },
       error => console.log('error', error)

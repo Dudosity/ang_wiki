@@ -5,7 +5,7 @@
 
 <div class="row" >
   <div class="col-3 sidebar shadow-sm p-3 mb-5 rounded">
-    <app-topic-list></app-topic-list>
+    <app-topic-list *ngIf="LetLogin() && getData() != null "></app-topic-list>
   </div>
   <div class="col-9">
     col-8

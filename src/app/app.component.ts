@@ -9,6 +9,12 @@ import {OnChanges} from '@angular/core';
 })
 export class AppComponent{
   title = 'untitled';
-  LetLogin: Boolean = User.SuccessLogin;
 
+
+  LetLogin() {
+    return User.SuccessLogin;
+  }
+  getData(){
+    return User.data;
+  }
 }
