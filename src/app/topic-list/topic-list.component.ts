@@ -8,27 +8,35 @@ import {User} from '../user';
   styleUrls: ['./topic-list.component.css']
 })
 export class TopicListComponent implements OnInit {
-  topic;
+  header;
+  body;
   data: any;
   constructor(private ApiService: UserService) { }
 
   ngOnInit() {
-    this.topic = {
-      username:'',
+    this.header = {
+      headers: {
       Authorization:''
+      }
+    };
+    this.body = {
+      username:''
     };
   }
 
   ShowTopic() {
-    this.topic.username = User.username;
-    this.topic.Authorization = User.token;
-  this.ApiService.GetTopicList(this.topic).subscribe(
+    this.body.username = User.username;
+    this.header.headers.Authorization = User.token;
+  this.ApiService.GetTopicList(this.header).subscribe(
     response => {
-      this.data = response.json();
-
+      this.data = JSON.stringify(response);
+      console.log(response);
 
     },
-    error => console.log('error', error)
+    error => {console.log('error', error);
+    this.data = error;
+
+    }
   );
   }
 }

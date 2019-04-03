@@ -9,4 +9,5 @@ import {User} from './user';
 export class AppComponent {
   title = 'untitled';
   LetLogin: Boolean = User.SuccessLogin;
+
 }

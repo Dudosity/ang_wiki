@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   }
 
   LoginUser() {
+    console.log(this.login);
     this.Auth.AuthUser(this.login).subscribe(
       response => {
         // JSON.stringify(product) ;
