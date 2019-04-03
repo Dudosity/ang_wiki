@@ -10,15 +10,15 @@ export class UserService {
   constructor(private http: HttpClient) { }
   registerNewUser(userData): Observable<any> {
 
-    return  this.http.post('http://127.0.0.1:8000/user_reg/',userData)
+    return  this.http.post('http://127.0.0.1:8000/user_reg/', userData);
   }
   AuthUser(userData): Observable<any> {
 
-    return  this.http.post('http://127.0.0.1:8000/auth/',userData)
+    return  this.http.post('http://127.0.0.1:8000/auth/', userData);
   }
   GetTopicList(userData): Observable<any> {
 
-    return  this.http.post('http://127.0.0.1:8000/user/', userData)
+    return  this.http.post('http://127.0.0.1:8000/user/', userData);
 }
 
 }

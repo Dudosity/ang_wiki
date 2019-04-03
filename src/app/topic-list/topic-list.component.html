@@ -1,7 +1,20 @@
 
-  <!--Ниже элемент, скопипащеный с codepen-->
-<div class="sidebar">
-  <button (click)="ShowTopic()">Get topics</button>
-  {{data}}
-</div>
+    <button (click)="ShowTopic()">Get topics</button>
+    {{data}}
 
+    <!-- Навбар -->
+    <nav id="navbar-example3" class="navbar navbar-light bg-light">
+      <nav class="nav nav-pills flex-column">
+        <a class="nav-link" href="#item-1">Пункт 1</a>
+        <nav class="nav nav-pills flex-column">
+          <a class="nav-link ml-3 my-1" href="#item-1-1">Пункт 1-1</a>
+          <a class="nav-link ml-3 my-1" href="#item-1-2">Пункт 1-2</a>
+        </nav>
+        <a class="nav-link" href="#item-2">Item2</a>
+        <a class="nav-link" href="#item-3">Item3</a>
+        <nav class="nav nav-pills flex-column">
+          <a class="nav-link ml-3 my-1" href="#item-3-1">Пункт 3-1</a>
+          <a class="nav-link ml-3 my-1" href="#item-3-2">Пункт 3-2</a>
+        </nav>
+      </nav>
+    </nav>
