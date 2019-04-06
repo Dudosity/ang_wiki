@@ -62,23 +62,41 @@ export class TopicListComponent implements OnInit {
   i = 0 ;
   treeControl = new NestedTreeControl<FoodNode>(node => node.children);
   dataSource = new MatTreeNestedDataSource();
-  item: FoodNode[];
+  item: any = [];
   topic: any;
 
   ngOnInit() {
     this.topic = User.data;
-    // this.parse(User.data);
+    this.parse(User.data);
     console.log(JSON.stringify(User.data));
   }
   hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
 
   parse(json: any) {
-    json = JSON.parse(json);
-    while (this.i in json.company[0]) {
-      console.log('Распарсенный json', JSON.stringify(json));
+
+    for (let comp of json[0].company) {
+      this.item.push({
+        name: comp.title,
+        children: [{}]
+      })
+      for (let thread of comp.threads) {
+        this.item[comp].children.push(
+          {
+            name: thread,
+            children: [{}]
+          }
+        )
+
+        for (let art of thread.articles) {
+          this.item[comp].children[thread].children.push({
+              name: art
+            }
+          )
+        }
+      }
+    }
+  console.log("Смотри сюда ",this.item)
   }
 
 
-
-  }
 }
