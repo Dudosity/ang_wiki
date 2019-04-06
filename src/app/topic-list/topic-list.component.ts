@@ -57,7 +57,7 @@ const TREE_DATA: FoodNode[] = [
 })
 export class TopicListComponent implements OnInit {
   constructor() {
-    this.dataSource.data = TREE_DATA;
+    this.dataSource.data = this.parse(User.data);
   }
   i = 0 ;
   treeControl = new NestedTreeControl<FoodNode>(node => node.children);
@@ -67,7 +67,6 @@ export class TopicListComponent implements OnInit {
 
   ngOnInit() {
     this.topic = User.data;
-    this.parse(User.data);
     console.log(JSON.stringify(User.data));
   }
   hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
@@ -75,27 +74,55 @@ export class TopicListComponent implements OnInit {
   parse(json: any) {
 
     for (let comp of json[0].company) {
-      this.item.push({
+      const compElement: any = {
         name: comp.title,
-        children: [{}]
-      })
+        children: []
+      };
+      this.item.push(compElement)
       for (let thread of comp.threads) {
-        this.item[comp].children.push(
-          {
-            name: thread,
-            children: [{}]
-          }
-        )
-
+        const threadElement: any = {
+          name: thread.title,
+          children: []
+        };
+        this.item[this.item.indexOf(compElement)].children.push(threadElement)
         for (let art of thread.articles) {
-          this.item[comp].children[thread].children.push({
-              name: art
-            }
-          )
+          this.item[this.item.indexOf(compElement)]
+            .children[this.item[this.item.indexOf(compElement)]
+            .children.indexOf(threadElement)].children.push({name: art.title})
         }
       }
     }
-  console.log("Смотри сюда ",this.item)
+    /*
+    //Вариант Сереги
+    for (const comp of json[0].company) {
+      this.item.push({
+        name: comp.title,
+        children: []
+      });
+      this.j = 0;
+      for (const thread of comp.threads) {
+        this.item[this.i].children.push(
+          {
+            name: thread.title,
+            children: []
+          }
+        );
+        for (const art of thread.articles) {
+          console.log(this.j);
+          this.item[this.i].children[this.j].children.push({
+              name: art.title,
+            }
+          );
+        }
+        this.j ++;
+      }
+      this.i ++;
+    }
+    console.log('Смотри сюда ', this.item);
+  }
+     */
+    console.log('ITEM',this.item);
+    return this.item;
   }
 
 
