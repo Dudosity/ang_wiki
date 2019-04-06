@@ -1,17 +1,17 @@
-
+<!--
 <div class="container sidebar overflow-auto " style="padding-right: 0px; padding-top: 2px" >
   <ul style="padding-left: 5px; padding-right: 0px">
-    <li class="text-break parent "  *ngFor="let comp of topic[0].company" style="alignment: left; margin-left: 0px; padding-left: 0px; padding-right: 0
+    <li class="text-break parent"  *ngFor="let comp of topic[0].company" name="company" style="alignment: left; margin-left: 0px; padding-left: 0px; padding-right: 0
 ; margin-right: 5px">
-      <div class="w-auto rounded-lg shadow-sm list-item ">{{comp.title}}</div>
+      <div class="w-auto rounded-lg list-itemx border">{{comp.title}}</div>
       <ul >
-        <li class="text-break parent" *ngFor="let th of comp.threads">
-          <div class="list-item">
+        <li class="text-break parent " name="thread" *ngFor="let th of comp.threads">
+          <div class="list-item border">
             {{th.title}}
           </div>
           <ul >
-            <li style="font-size: smaller "  class="text-break" *ngFor="let art of th.articles">
-              <div class="list-item">
+            <li style="font-size: smaller;" ngClass="{invisible: visibility;}"  class="text-break" *ngFor="let art of th.articles">
+              <div class="list-item border ">
                 {{art.title}}
               </div>
             </li>
@@ -21,3 +21,31 @@
     </li>
   </ul>
 </div>
+-->
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
+  <!-- This is the tree node template for leaf nodes -->
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+    <li class="mat-tree-node">
+      <!-- use a disabled button to provide padding for tree leaf -->
+      <button mat-icon-button disabled></button>
+      {{node.name}}
+    </li>
+  </mat-tree-node>
+  <!-- This is the tree node template for expandable nodes -->
+  <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+    <li>
+      <div class="mat-tree-node">
+        <button mat-icon-button matTreeNodeToggle
+                [attr.aria-label]="'toggle ' + node.name">
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+          </mat-icon>
+        </button>
+        {{node.name}}
+      </div>
+      <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+        <ng-container matTreeNodeOutlet></ng-container>
+      </ul>
+    </li>
+  </mat-nested-tree-node>
+</mat-tree>

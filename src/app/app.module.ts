@@ -10,6 +10,11 @@ import {FormsModule} from '@angular/forms';
 import { RegistrationComponent } from './registration/registration.component';
 import {UserService} from './user.service';
 import { LoginComponent } from './login/login.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatTreeModule} from '@angular/material/tree';
+import {MatButtonModule, MatIconModule} from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +25,9 @@ import { LoginComponent } from './login/login.component';
   ],
   imports: [ BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatTreeModule, MatIconModule, MatButtonModule, MatIconModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

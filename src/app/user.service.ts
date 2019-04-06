@@ -12,21 +12,21 @@ export class UserService {
   constructor(private http: HttpClient) {
     this.header = {
       headers: {
-        Authorization:''
+        Authorization: ''
       }
     };
   }
   registerNewUser(userData): Observable<any> {
 
-    return  this.http.post('http://127.0.0.1:8000/user_reg/',userData)
+    return  this.http.post('http://127.0.0.1:8000/user_reg/', userData);
   }
   AuthUser(userData): Observable<any> {
 
-    return  this.http.post('http://127.0.0.1:8000/auth/',userData)
+    return  this.http.post('http://127.0.0.1:8000/auth/', userData);
   }
   GetTopicList(userData): Observable<any> {
 
-    return  this.http.get('http://127.0.0.1:8000/user/', userData)
+    return  this.http.get('http://127.0.0.1:8000/user/', userData);
 }
   ShowTopic() {
     this.header.headers.Authorization = User.token;
