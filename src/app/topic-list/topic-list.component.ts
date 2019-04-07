@@ -112,11 +112,14 @@ export class TopicListComponent implements OnInit {
     response => {
       User.topic = {
         articleText: response.desc,
+        articleName: response.title,
         authorId: response.author.id,
-        authorName: response.author.username
+        authorUsername: response.author.username,
+        authorName: response.author.profile[0].name,
+        authorSurname: response.author.profile[0].surname
       }
       User.NewTopic = true;
-      console.log("Ответ", User.topic.articleText)
+      console.log("Ответ", User.topic.authorName)
     },
       error => console.log('error', error)
     );

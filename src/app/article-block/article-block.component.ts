@@ -8,7 +8,12 @@ import {and} from '@angular/router/src/utils/collection';
   styleUrls: ['./article-block.component.css']
 })
 export class ArticleBlockComponent implements OnInit {
-  articleText: any = 'Лох';
+  articleText: any = '';
+  aricleAuthorName: any = '';
+  aricleAuthorSurName: any = '';
+  aricleAuthorUserName: any = '';
+  articleName: any = '';
+
   New: boolean;
   constructor() { }
 
@@ -21,6 +26,9 @@ export class ArticleBlockComponent implements OnInit {
   }
   ViewTopicText() {
     this.articleText = User.topic.articleText;
-    return this.articleText;
+    this.aricleAuthorName = User.topic.authorName;
+    this.aricleAuthorSurName = User.topic.authorSurname;
+    this.aricleAuthorUserName = User.topic.authorUsername;
+    this.articleName = User.topic.articleName;
   }
 }

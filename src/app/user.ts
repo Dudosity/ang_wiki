@@ -1,9 +1,12 @@
 export class User {
   static username: string;
   static topic: {
-    articleText: "",
-    authorId: "",
-    authorName: ""
+    articleText: '',
+    articleName: '',
+    authorId: '',
+    authorUsername: '',
+    authorName: '',
+    authorSurname: ''
   };
   static NewTopic: boolean = false;
   static token: string;
