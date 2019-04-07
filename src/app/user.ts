@@ -8,7 +8,8 @@ export class User {
     authorName: '',
     authorSurname: ''
   };
-  static NewTopic: boolean = false;
+  static NewTopic = false;
+  static userId: any;
   static token: string;
   static SuccessLogin: boolean;
   static data: any;

@@ -42,9 +42,10 @@ export class TopicListComponent implements OnInit {
 
   ngOnInit() {
     console.log(JSON.stringify(User.data));
-    this.company ={
+    this.company = {
       title: '',
       description: '',
+      owner: '',
       threads: null
     };
   }
@@ -125,18 +126,20 @@ export class TopicListComponent implements OnInit {
         authorSurname: response.author.profile[0].surname
       }
       User.NewTopic = true;
-      console.log("Ответ", User.topic.authorName)
+      console.log('Ответ', User.topic.authorName)
     },
       error => console.log('error', error)
     );
-    //ArticleBlockComponent.ViewTopicText();
-    console.log("id", id)
+    // ArticleBlockComponent.ViewTopicText();
+    console.log('id', id);
   }
 
   addCompany() {
+    this.company.owner = User.userId;
+    console.log(this.company.owner);
     this.topics.AddCompany(this.company).subscribe(
       response => {
-        console.log("Все огонь", response)
+        console.log('Все огонь', response);
 
       },
       error => console.log(error)

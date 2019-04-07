@@ -30,11 +30,11 @@ export class UserService {
   }
   GetArticles(userData): Observable<any> {
 
-    return  this.http.get('http://127.0.0.1:8000/articles/' + userData +'/');
+    return  this.http.get('http://127.0.0.1:8000/articles/' + userData + '/');
   }
   AddCompany(userData): Observable<any> {
 
-    return  this.http.get('http://127.0.0.1:8000/companies/', userData );
+    return  this.http.post('http://127.0.0.1:8000/companies/', userData );
   }
   ShowTopic() {
     this.header.headers.Authorization = User.token;
@@ -43,6 +43,7 @@ export class UserService {
       response => {
         console.log(response);
         User.data = response;
+        User.userId = response[0].id;
       },
       error => {console.log('error', error);
       }
