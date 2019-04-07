@@ -32,6 +32,10 @@ export class UserService {
 
     return  this.http.get('http://127.0.0.1:8000/articles/' + userData +'/');
   }
+  AddCompany(userData): Observable<any> {
+
+    return  this.http.get('http://127.0.0.1:8000/companies/', userData );
+  }
   ShowTopic() {
     this.header.headers.Authorization = User.token;
     console.log(User.token);

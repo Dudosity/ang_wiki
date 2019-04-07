@@ -1,6 +1,8 @@
 .sidebar {
   min-height: 100vh;
   background-color: rgba(106, 102, 173, 0.17);
+  width: auto;
+  padding-right: 0px;
 
 }
 body {

@@ -38,9 +38,15 @@ export class TopicListComponent implements OnInit {
   treeControl = new NestedTreeControl<FoodNode>(node => node.children);
   dataSource = new MatTreeNestedDataSource();
   item: any = [];
+  company;
 
   ngOnInit() {
     console.log(JSON.stringify(User.data));
+    this.company ={
+      title: '',
+      description: '',
+      threads: null
+    };
   }
   hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
 
@@ -125,5 +131,15 @@ export class TopicListComponent implements OnInit {
     );
     //ArticleBlockComponent.ViewTopicText();
     console.log("id", id)
+  }
+
+  addCompany() {
+    this.topics.AddCompany(this.company).subscribe(
+      response => {
+        console.log("Все огонь", response)
+
+      },
+      error => console.log(error)
+    );
   }
 }

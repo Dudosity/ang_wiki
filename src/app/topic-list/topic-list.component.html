@@ -22,7 +22,21 @@
   </ul>
 </div>
 -->
-<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
+
+
+
+  <div class="col-lg-12" style="padding-left: 0px; padding-right: 0px;">
+    <div class="input-group">
+      <input  [(ngModel)]="company.name" type="text" class="form-control" placeholder="Add company">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="submit" (click)="addCompany()">Add!</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+
+
+
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree rounded-bottom shadow-sm" style=" background-color: rgba(106,102,173,0.13); ">
   <!-- This is the tree node template for leaf nodes -->
   <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
     <li class="mat-tree-node">

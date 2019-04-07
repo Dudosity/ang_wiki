@@ -1,14 +1,15 @@
-<app-nav-bar></app-nav-bar>
+<app-nav-bar *ngIf="LetLogin() && getData() != null"></app-nav-bar>
 <!-- <app-registration></app-registration>-->
 <app-login></app-login>
 
-
-<div class="row" >
-  <div class="col-3 sidebar " style="alignment: left; padding-left: 30px; padding-right: 0px;">
-    <app-topic-list *ngIf="LetLogin() && getData() != null " style="alignment: left; margin-left: 0px; padding-left: 0px;"></app-topic-list>
+<div class="container-fluid">
+<div class="row" *ngIf="LetLogin() && getData() != null" >
+  <div class="col-3 sidebar" style="padding-left: 0px">
+    <app-topic-list *ngIf="LetLogin() && getData() != null" style="padding-right: 0px; margin-right: 0px;"></app-topic-list>
   </div>
-  <div class="col-9">
+  <div class="col-9" style="padding-left: 0px; padding-right: 0px;">
     <app-article-block *ngIf="LetLogin() && getData() != null "></app-article-block>
   </div>
 </div>
 
+</div>
