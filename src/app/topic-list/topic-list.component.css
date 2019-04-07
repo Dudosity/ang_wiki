@@ -2,8 +2,6 @@
 
 .list-item {
   alignment: left;
-  margin-left: 0px;
-  padding-left: 0px;
   line-height: 30px;
   cursor: pointer;
   display: block;
@@ -28,9 +26,4 @@
   margin-top: 0;
   margin-bottom: 0;
   list-style-type: none;
-}
-
-ul ul {
-  margin-left: 0px;
-  padding-left: 7px;
 }

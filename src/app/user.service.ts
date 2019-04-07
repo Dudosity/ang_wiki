@@ -27,7 +27,11 @@ export class UserService {
   GetTopicList(userData): Observable<any> {
 
     return  this.http.get('http://127.0.0.1:8000/user/', userData);
-}
+  }
+  GetArticles(userData): Observable<any> {
+
+    return  this.http.get('http://127.0.0.1:8000/articles/' + userData +'/');
+  }
   ShowTopic() {
     this.header.headers.Authorization = User.token;
     console.log(User.token);

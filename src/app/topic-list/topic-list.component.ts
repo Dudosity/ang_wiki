@@ -7,38 +7,13 @@ import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import {FlatTreeControl, NestedTreeControl} from '@angular/cdk/tree';
 import {MatIconModule} from '@angular/material/icon';
 import {MatIconRegistry} from '@angular/material';
+import {ArticleBlockComponent} from '../article-block/article-block.component';
 
 interface FoodNode {
   name: string;
   children?: FoodNode[];
 }
-const TREE_DATA: FoodNode[] = [
-  {
-    name: 'Fruit',
-    children: [
-      {name: 'Apple'},
-      {name: 'Banana'},
-      {name: 'Fruit loops'},
-    ]
-  }, {
-    name: 'Vegetables',
-    children: [
-      {
-        name: 'Green',
-        children: [
-          {name: 'Broccoli'},
-          {name: 'Brussel sprouts'},
-        ]
-      }, {
-        name: 'Orange',
-        children: [
-          {name: 'Pumpkins'},
-          {name: 'Carrots'},
-        ]
-      },
-    ]
-  },
-];
+
 @Component({
   selector: 'app-topic-list',
   templateUrl: './topic-list.component.html',
@@ -56,17 +31,15 @@ const TREE_DATA: FoodNode[] = [
 
 })
 export class TopicListComponent implements OnInit {
-  constructor() {
+  constructor(private topics: UserService) {
     this.dataSource.data = this.parse(User.data);
   }
   i = 0 ;
   treeControl = new NestedTreeControl<FoodNode>(node => node.children);
   dataSource = new MatTreeNestedDataSource();
   item: any = [];
-  topic: any;
 
   ngOnInit() {
-    this.topic = User.data;
     console.log(JSON.stringify(User.data));
   }
   hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
@@ -86,9 +59,17 @@ export class TopicListComponent implements OnInit {
         };
         this.item[this.item.indexOf(compElement)].children.push(threadElement)
         for (let art of thread.articles) {
-          this.item[this.item.indexOf(compElement)]
-            .children[this.item[this.item.indexOf(compElement)]
-            .children.indexOf(threadElement)].children.push({name: art.title})
+          this.item[
+            this.item.indexOf(compElement)
+            ]
+            .children[
+              this.item[
+                this.item.indexOf(compElement)
+                ]
+              .children.indexOf(threadElement)
+            ].children.push({
+            name: art.title,
+            id: art.id})
         }
       }
     }
@@ -126,4 +107,20 @@ export class TopicListComponent implements OnInit {
   }
 
 
+  ViewTopic(id: any) {
+    this.topics.GetArticles(id).subscribe(
+    response => {
+      User.topic = {
+        articleText: response.desc,
+        authorId: response.author.id,
+        authorName: response.author.username
+      }
+      User.NewTopic = true;
+      console.log("Ответ", User.topic.articleText)
+    },
+      error => console.log('error', error)
+    );
+    //ArticleBlockComponent.ViewTopicText();
+    console.log("id", id)
+  }
 }

@@ -14,6 +14,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatButtonModule, MatIconModule} from '@angular/material';
+import { ArticleBlockComponent } from './article-block/article-block.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {MatButtonModule, MatIconModule} from '@angular/material';
     NavBarComponent,
     TopicListComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    ArticleBlockComponent
   ],
   imports: [ BrowserModule,
     FormsModule,

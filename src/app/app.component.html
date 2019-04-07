@@ -4,11 +4,11 @@
 
 
 <div class="row" >
-  <div class="col-3 sidebar shadow-sm " style="alignment: left; margin-left: 0px; padding-left: 0px;padding-right: 0px;">
+  <div class="col-3 sidebar " style="alignment: left; padding-left: 30px; padding-right: 0px;">
     <app-topic-list *ngIf="LetLogin() && getData() != null " style="alignment: left; margin-left: 0px; padding-left: 0px;"></app-topic-list>
   </div>
   <div class="col-9">
-    col-8
+    <app-article-block *ngIf="LetLogin() && getData() != null "></app-article-block>
   </div>
 </div>
 
