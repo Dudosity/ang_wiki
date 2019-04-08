@@ -25,11 +25,13 @@
 
 
 
-  <div class="col-lg-12" style="padding-left: 0px; padding-right: 0px;">
+  <div class="col-lg-12 container" style="padding-left: 0px; padding-right: 0px;">
     <div class="input-group">
-      <input  [(ngModel)]="company.title" type="text" class="form-control" placeholder="Add company">
-      <span class="input-group-btn">
-        <button class="btn btn-primary" type="submit" (click)="addCompany()">Add!</button>
+      <input  [(ngModel)]="company.title" type="text" class="form-control" style="background-color: rgba(106, 102, 173, 0.17); height: auto" placeholder="Add company">
+      <span class="input-group-btn layout-align-center">
+        <button class="btn btn-secondary btn-sm" type="submit" (click)="addCompany()"><i class="material-icons layout-align-center">
+add_circle
+</i></button>
       </span>
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
@@ -43,6 +45,9 @@
       <!-- use a disabled button to provide padding for tree leaf -->
       <button mat-icon-button disabled></button>
       <div (click)="ViewTopic(node.id)">{{node.name}}</div>
+
+
+
     </li>
   </mat-tree-node>
   <!-- This is the tree node template for expandable nodes -->
@@ -60,6 +65,16 @@
       <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
 
           <ng-container matTreeNodeOutlet ></ng-container>
+
+
+        <div class="col-lg-12" style="padding-left: auto; padding-right: 0px; opacity: 0.1;">
+          <div class="input-group">
+            <input  [(ngModel)]="company.title" type="text" class="form-control" placeholder="Add {{node.type}}">
+            <span class="input-group-btn">
+        <button class="btn btn-primary" type="submit" (click)="addCompany()">Add!</button>
+      </span>
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
 
 
       </ul>

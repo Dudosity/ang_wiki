@@ -10,6 +10,7 @@ import {MatIconRegistry} from '@angular/material';
 import {ArticleBlockComponent} from '../article-block/article-block.component';
 
 interface FoodNode {
+  type: string;
   name: string;
   children?: FoodNode[];
 }
@@ -55,12 +56,14 @@ export class TopicListComponent implements OnInit {
     const item: any = [];
     for (const comp of json[0].company) {
       const compElement: any = {
+        type: 'Thread',
         name: comp.title,
         children: []
       };
       item.push(compElement);
       for (const thread of comp.threads) {
         const threadElement: any = {
+          type: 'Article',
           name: thread.title,
           children: []
         };
@@ -75,6 +78,7 @@ export class TopicListComponent implements OnInit {
                 ]
               .children.indexOf(threadElement)
             ].children.push({
+            // type: 'Article',
             name: art.title,
             id: art.id});
         }
