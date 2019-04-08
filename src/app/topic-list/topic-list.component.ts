@@ -32,12 +32,11 @@ interface FoodNode {
 })
 export class TopicListComponent implements OnInit {
   constructor(private topics: UserService) {
-    this.dataSource.data = this.parse(User.data);
   }
   i = 0 ;
   treeControl = new NestedTreeControl<FoodNode>(node => node.children);
   dataSource = new MatTreeNestedDataSource();
-  item: any = [];
+
   company;
 
   ngOnInit() {
@@ -48,35 +47,36 @@ export class TopicListComponent implements OnInit {
       owner: '',
       threads: null
     };
+    this.dataSource.data = this.parse(User.data);
   }
   hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
 
   parse(json: any) {
-
-    for (let comp of json[0].company) {
+    const item: any = [];
+    for (const comp of json[0].company) {
       const compElement: any = {
         name: comp.title,
         children: []
       };
-      this.item.push(compElement)
-      for (let thread of comp.threads) {
+      item.push(compElement);
+      for (const thread of comp.threads) {
         const threadElement: any = {
           name: thread.title,
           children: []
         };
-        this.item[this.item.indexOf(compElement)].children.push(threadElement)
-        for (let art of thread.articles) {
-          this.item[
-            this.item.indexOf(compElement)
+        item[item.indexOf(compElement)].children.push(threadElement);
+        for (const art of thread.articles) {
+          item[
+            item.indexOf(compElement)
             ]
             .children[
-              this.item[
-                this.item.indexOf(compElement)
+              item[
+                item.indexOf(compElement)
                 ]
               .children.indexOf(threadElement)
             ].children.push({
             name: art.title,
-            id: art.id})
+            id: art.id});
         }
       }
     }
@@ -109,8 +109,8 @@ export class TopicListComponent implements OnInit {
     console.log('Смотри сюда ', this.item);
   }
      */
-    console.log('ITEM',this.item);
-    return this.item;
+    console.log('ITEM', item);
+    return item;
   }
 
 
@@ -124,9 +124,9 @@ export class TopicListComponent implements OnInit {
         authorUsername: response.author.username,
         authorName: response.author.profile[0].name,
         authorSurname: response.author.profile[0].surname
-      }
+      };
       User.NewTopic = true;
-      console.log('Ответ', User.topic.authorName)
+      console.log('Ответ', User.topic.authorName);
     },
       error => console.log('error', error)
     );
@@ -140,6 +140,9 @@ export class TopicListComponent implements OnInit {
     this.topics.AddCompany(this.company).subscribe(
       response => {
         console.log('Все огонь', response);
+        this.topics.ShowTopic();
+        this.ngOnInit();
+        window.location.reload();
 
       },
       error => console.log(error)

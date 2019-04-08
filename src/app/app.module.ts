@@ -15,6 +15,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatButtonModule, MatIconModule} from '@angular/material';
 import { ArticleBlockComponent } from './article-block/article-block.component';
+import {CookieService} from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { ArticleBlockComponent } from './article-block/article-block.component';
     BrowserAnimationsModule,
     MatTreeModule, MatIconModule, MatButtonModule, MatIconModule
   ],
-  providers: [UserService],
+  providers: [UserService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
