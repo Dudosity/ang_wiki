@@ -41,7 +41,7 @@ add_circle
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree rounded-bottom shadow-sm" style=" background-color: rgba(106,102,173,0.13); ">
   <!-- This is the tree node template for leaf nodes -->
   <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
-    <li class="mat-tree-node">
+    <li class="mat-tree-node TreeAngList rounded">
       <!-- use a disabled button to provide padding for tree leaf -->
       <button mat-icon-button disabled></button>
       <div (click)="ViewTopic(node.id)">{{node.name}}</div>
@@ -67,11 +67,13 @@ add_circle
           <ng-container matTreeNodeOutlet ></ng-container>
 
 
-        <div class="col-lg-12" style="padding-left: auto; padding-right: 0px; opacity: 0.1;">
+        <div class="col-lg-12" style="padding-left: 10px; padding-right: 0px;">
           <div class="input-group">
-            <input  [(ngModel)]="company.title" type="text" class="form-control" placeholder="Add {{node.type}}">
-            <span class="input-group-btn">
-        <button class="btn btn-primary" type="submit" (click)="addCompany()">Add!</button>
+            <input [(ngModel)]="company.title" type="text" class="form-control" style="background-color: rgba(8,8,8,0); height: auto;" placeholder="Add {{node.type}}">
+            <span class="input-group-btn layout-align-center">
+        <button class="btn-secondary btn-sm" type="submit" style="height: 100%;" (click)="addCompany()"><i class="material-icons" style="vertical-align: middle;">
+add_circle
+</i></button>
       </span>
           </div><!-- /input-group -->
         </div><!-- /.col-lg-6 -->
