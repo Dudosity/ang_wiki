@@ -24,27 +24,31 @@
 -->
 
 
-
-  <div class="col-lg-12 container" style="padding-left: 0px; padding-right: 0px;">
-    <div class="input-group">
-      <input  [(ngModel)]="company.title" type="text" class="form-control" style="background-color: rgba(106, 102, 173, 0.17); height: auto;" placeholder="Add company">
+<!--
+  <div class="col-lg-12 container" style="background-color: rgba(106, 102, 173, 0.17); padding-left: 0px; padding-right: 0px;">
+    <div class="input-group" style="padding-top: 0px;" >
+      <input  [(ngModel)]="company.title" type="text" class="form-control" style="opacity: 0.9; height: auto;" placeholder="Add company">
       <span class="input-group-btn layout-align-center">
-        <button class="btn-primary btn-sm" type="submit" style="height: 100%;" (click)="addCompany()"><i class="material-icons" style="vertical-align: middle;">
+        <button mat-raised-button class="btn-sm" type="submit" style="height: 100%;" (click)="addCompany()"><i class="material-icons" style="vertical-align: middle;">
 add_circle
 </i></button>
       </span>
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
+    </div>
+  </div> -->
 
 
+<p class="font-weight-normal rounded-bottom text-muted text-monospace" style="margin-bottom: 0px; margin-top: 10px;margin-left: 10px;">
+  Дерево Статей</p>
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree rounded-bottom" style=" background-color: rgba(106,102,173,0); padding-top: 0px">
 
-<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree rounded-bottom shadow-sm" style=" background-color: rgba(106,102,173,0.13); ">
   <!-- This is the tree node template for leaf nodes -->
   <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
-    <li class="mat-tree-node TreeAngList rounded">
+    <li class="mat-tree-node TreeAngList rounded" (click)="ViewTopic(node.id)">
       <!-- use a disabled button to provide padding for tree leaf -->
       <button mat-icon-button disabled></button>
-      <div (click)="ViewTopic(node.id)">{{node.name}}</div>
+      <div >{{node.name}}        <i class="material-icons" style="vertical-align: middle;cursor: pointer;opacity: 0.7;">
+        add
+      </i></div>
 
 
 
@@ -60,23 +64,18 @@ add_circle
             {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
           </mat-icon>
         </button>
+        <div>
         {{node.name}}
+        </div>
+        <i class="material-icons" style="vertical-align: middle;cursor: pointer;opacity: 0.7;">
+          add
+        </i>
       </div>
       <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
 
           <ng-container matTreeNodeOutlet ></ng-container>
 
 
-        <div class="col-lg-12" style="padding-left: 10px; padding-right: 0px;">
-          <div class="input-group">
-            <input [(ngModel)]="company.title" type="text" class="form-control" style="background-color: rgba(8,8,8,0); height: auto;" placeholder="Add {{node.type}}">
-            <span class="input-group-btn layout-align-center">
-        <button class="btn-primary btn-sm" type="submit" style="height: 100%;" (click)="addCompany()"><i class="material-icons" style="vertical-align: middle;">
-add_circle
-</i></button>
-      </span>
-          </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
 
 
       </ul>

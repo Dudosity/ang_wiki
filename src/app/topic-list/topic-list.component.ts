@@ -6,8 +6,9 @@ import {MatTreeModule, MatTreeNestedDataSource} from '@angular/material/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import {FlatTreeControl, NestedTreeControl} from '@angular/cdk/tree';
 import {MatIconModule} from '@angular/material/icon';
-import {MatIconRegistry} from '@angular/material';
+import { MatIconRegistry} from '@angular/material';
 import {ArticleBlockComponent} from '../article-block/article-block.component';
+import {MatDivider} from '@angular/material';
 
 interface FoodNode {
   type: string;
@@ -27,7 +28,8 @@ interface FoodNode {
       NestedTreeControl,
       MatTreeNestedDataSource,
       MatIconModule,
-      MatIconRegistry
+      MatIconRegistry,
+      MatDivider
     ],
 
 })

@@ -13,9 +13,10 @@ import { LoginComponent } from './login/login.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatTreeModule} from '@angular/material/tree';
-import {MatButtonModule, MatIconModule} from '@angular/material';
+import {MatButtonModule, MatDivider, MatIconModule} from '@angular/material';
 import { ArticleBlockComponent } from './article-block/article-block.component';
 import {CookieService} from 'ngx-cookie-service';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import {CookieService} from 'ngx-cookie-service';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatTreeModule, MatIconModule, MatButtonModule, MatIconModule
+    MatTreeModule, MatIconModule, MatButtonModule, MatIconModule, MatDividerModule
   ],
   providers: [UserService, CookieService],
   bootstrap: [AppComponent]
