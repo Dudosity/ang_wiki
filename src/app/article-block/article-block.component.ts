@@ -13,14 +13,14 @@ export class ArticleBlockComponent implements OnInit {
   aricleAuthorSurName: any = '';
   aricleAuthorUserName: any = '';
   articleName: any = '';
-
+  isInput = false;
   New: boolean;
   constructor() { }
 
   ngOnInit() {
   }
 
-  isNew(){
+  isNew() {
     this.New = User.NewTopic;
     return this.New;
   }
@@ -31,4 +31,13 @@ export class ArticleBlockComponent implements OnInit {
     this.aricleAuthorUserName = User.topic.authorUsername;
     this.articleName = User.topic.articleName;
   }
+
+  input(exit: string) {
+    if (exit == 'exit'){
+      this.isInput = false;
+    } else {
+    this.isInput = true;
+  }
+  }
+
 }
