@@ -3,7 +3,7 @@
     {{ViewTopicText()}}
     <h3>{{articleName}}</h3>
     <h5>Автор: {{aricleAuthorName}} {{aricleAuthorSurName}}</h5>
-    <p *ngIf="!isInput" (click)="input()">{{articleText}}</p>
+    <p *ngIf="!isInput" >{{articleText}}</p>
     <!-- <input style="width: auto;" *ngIf="isInput" value="{{articleText}}"/>
     <textarea *ngIf="isInput" class="form-control" id="exampleFormControlTextarea1" rows="100" (mouseleave)="input('exit')">{{articleText}}</textarea> -->
   </div>

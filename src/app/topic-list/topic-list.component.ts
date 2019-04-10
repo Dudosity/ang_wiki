@@ -139,13 +139,14 @@ export class TopicListComponent implements OnInit {
         authorName: response.author.profile[0].name,
         authorSurname: response.author.profile[0].surname
       };
-      User.NewTopic = true;
+
       console.log('Ответ', User.topic.authorName);
     },
       error => console.log('error', error)
     );
     // ArticleBlockComponent.ViewTopicText();
     console.log('id', id);
+
   }
 
   addCompany() {

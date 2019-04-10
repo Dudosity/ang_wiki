@@ -29,7 +29,7 @@ export class UserService {
     return  this.http.get('http://127.0.0.1:8000/user/', userData);
   }
   GetArticles(userData): Observable<any> {
-
+    User.NewTopic = true;
     return  this.http.get('http://127.0.0.1:8000/articles/' + userData + '/');
   }
   AddCompany(userData): Observable<any> {
