@@ -28,15 +28,14 @@ interface FoodNode {
       NestedTreeControl,
       MatTreeNestedDataSource,
       MatIconModule,
-      MatIconRegistry,
-      MatDivider
+      MatIconRegistry
     ],
 
 })
 export class TopicListComponent implements OnInit {
   constructor(private topics: UserService) {
   }
-  i = 0 ;
+  id = 0;
   treeControl = new NestedTreeControl<FoodNode>(node => node.children);
   dataSource = new MatTreeNestedDataSource();
 
@@ -53,12 +52,15 @@ export class TopicListComponent implements OnInit {
     this.dataSource.data = this.parse(User.data);
   }
   hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
+  visibility: boolean[] = [];
 
   parse(json: any) {
+    this.id = 0;
     const item: any = [];
     for (const comp of json[0].company) {
       const compElement: any = {
         type: 'Thread',
+        elementId: this.id ++,
         name: comp.title,
         children: []
       };
@@ -66,6 +68,7 @@ export class TopicListComponent implements OnInit {
       for (const thread of comp.threads) {
         const threadElement: any = {
           type: 'Article',
+          elementId: this.id ++,
           name: thread.title,
           children: []
         };
@@ -81,10 +84,15 @@ export class TopicListComponent implements OnInit {
               .children.indexOf(threadElement)
             ].children.push({
             // type: 'Article',
+            elementId: this.id ++,
             name: art.title,
             id: art.id});
         }
       }
+    }
+
+    for(var i = 0; i < this.id; i++){
+      this.visibility[i] = true;
     }
     /*
     //Вариант Сереги
@@ -154,4 +162,6 @@ export class TopicListComponent implements OnInit {
       error => console.log(error)
     );
   }
+
+
 }
