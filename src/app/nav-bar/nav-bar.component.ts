@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from '../user';
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,4 +13,7 @@ export class NavBarComponent implements OnInit {
   ngOnInit() {
   }
 
+  HideTopics() {
+  User.HideTopic = !User.HideTopic;
+  }
 }

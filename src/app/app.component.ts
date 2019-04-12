@@ -10,6 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class AppComponent implements OnInit {
   title = 'untitled';
   loading: boolean;
+  TopicHide = false;
   LetLogin() {
     this.loading = User.data;
     return this.loading;
@@ -20,6 +21,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = User.SuccessLogin;
+  }
+  HideTopic() {
+    this.TopicHide = User.HideTopic;
+    return this.TopicHide;
   }
 
 }

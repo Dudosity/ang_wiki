@@ -13,4 +13,5 @@ export class User {
   static token: string;
   static SuccessLogin: boolean;
   static data: any;
+  static HideTopic = false;
 }

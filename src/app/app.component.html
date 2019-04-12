@@ -1,14 +1,28 @@
-<app-nav-bar *ngIf="LetLogin() && getData() != null"></app-nav-bar>
+<app-nav-bar *ngIf="LetLogin() && getData() != null"><div class="spinner-border" role="status">
+  <span class="sr-only">Loading...</span>
+</div></app-nav-bar>
 <!-- <app-registration></app-registration>-->
-<app-login></app-login>
+<app-login><div class="spinner-border" role="status">
+  <span class="sr-only">Loading...</span>
+</div></app-login>
 
 <div class="container-fluid">
 <div class="row" *ngIf="LetLogin() && getData() != null" >
-  <div class="col-3 sidebar" style="padding-left: 0px">
-    <app-topic-list *ngIf="LetLogin() && getData() != null" style="padding-right: 0px; margin-right: 0px;"></app-topic-list>
+  <div *ngIf="!HideTopic()" class="col-3 sidebar" style="padding-left: 0px">
+    <app-topic-list *ngIf=" LetLogin() && getData() != null " style="padding-right: 0px; margin-right: 0px;"><div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div></app-topic-list>
   </div>
-  <div class="col-9 shadow" style="min-height: 100vh; padding-left: 0px; padding-right: 0px;">
-    <app-article-block *ngIf="LetLogin() && getData() != null "></app-article-block>
+  <div *ngIf="!HideTopic()" class="col-9 shadow" style="min-height: 100vh; padding-left: 0px; padding-right: 0px;">
+    <app-article-block *ngIf="LetLogin() && getData() != null "><div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div></app-article-block>
+
+  </div>
+  <div *ngIf="HideTopic()" class="col-12 shadow" style="min-height: 100vh; padding-left: 0px; padding-right: 0px;">
+    <app-article-block *ngIf="LetLogin() && getData() != null "><div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div></app-article-block>
 
   </div>
 
@@ -18,4 +32,6 @@
 <div>
 
 </div>
-<app-footer></app-footer>
+<app-footer><div class="spinner-border" role="status">
+  <span class="sr-only">Loading...</span>
+</div></app-footer>
