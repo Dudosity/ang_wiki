@@ -17,6 +17,8 @@ import {MatButtonModule, MatDivider, MatIconModule} from '@angular/material';
 import { ArticleBlockComponent } from './article-block/article-block.component';
 import {CookieService} from 'ngx-cookie-service';
 import {MatDividerModule} from '@angular/material/divider';
+import { FooterComponent } from './footer/footer.component';
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -25,13 +27,14 @@ import {MatDividerModule} from '@angular/material/divider';
     TopicListComponent,
     RegistrationComponent,
     LoginComponent,
-    ArticleBlockComponent
+    ArticleBlockComponent,
+    FooterComponent
   ],
   imports: [ BrowserModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatTreeModule, MatIconModule, MatButtonModule, MatIconModule, MatDividerModule
+    MatTreeModule, MatIconModule, MatButtonModule, MatIconModule, MatDividerModule, MDBBootstrapModule
   ],
   providers: [UserService, CookieService],
   bootstrap: [AppComponent]
