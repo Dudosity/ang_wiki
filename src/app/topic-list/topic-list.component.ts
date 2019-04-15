@@ -40,6 +40,7 @@ export class TopicListComponent implements OnInit {
   dataSource = new MatTreeNestedDataSource();
 
   company;
+  visibility: boolean[] = [];
 
   ngOnInit() {
     console.log(JSON.stringify(User.data));
@@ -52,7 +53,6 @@ export class TopicListComponent implements OnInit {
     this.dataSource.data = this.parse(User.data);
   }
   hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
-  visibility: boolean[] = [];
 
   parse(json: any) {
     this.id = 0;

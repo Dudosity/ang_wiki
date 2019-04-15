@@ -1,9 +1,9 @@
 
-  <div *ngIf="isNew()" style="padding-left: 20px">
-    {{ViewTopicText()}}
+  <div *ngIf="ViewTopicText()" style="padding-left: 20px;height: 100%; padding-bottom: 20px;">
     <h3>{{articleName}}</h3>
     <h5>Автор: {{aricleAuthorName}} {{aricleAuthorSurName}}</h5>
-    <p *ngIf="!isInput" >{{articleText}}</p>
+    {{articleText}}
+
     <!-- <input style="width: auto;" *ngIf="isInput" value="{{articleText}}"/>
     <textarea *ngIf="isInput" class="form-control" id="exampleFormControlTextarea1" rows="100" (mouseleave)="input('exit')">{{articleText}}</textarea> -->
   </div>

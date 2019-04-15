@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../user';
-import {and} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-article-block',
@@ -8,36 +7,29 @@ import {and} from '@angular/router/src/utils/collection';
   styleUrls: ['./article-block.component.css']
 })
 export class ArticleBlockComponent implements OnInit {
-  articleText: any = '';
+  articleText: any = '' ;
   aricleAuthorName: any = '';
   aricleAuthorSurName: any = '';
   aricleAuthorUserName: any = '';
   articleName: any = '';
   isInput = false;
-  New: boolean;
+  New = false;
   constructor() { }
 
   ngOnInit() {
   }
 
-  isNew() {
-    this.New = User.NewTopic;
-    return this.New;
-  }
-  ViewTopicText() {
-    this.articleText = User.topic.articleText;
-    this.aricleAuthorName = User.topic.authorName;
-    this.aricleAuthorSurName = User.topic.authorSurname;
-    this.aricleAuthorUserName = User.topic.authorUsername;
-    this.articleName = User.topic.articleName;
-  }
 
-  input(exit: string) {
-    if (exit == 'exit'){
-      this.isInput = false;
-    } else {
-    this.isInput = true;
-  }
+  ViewTopicText() {
+    if (User.topic !== undefined && !null) {
+      this.articleText = User.topic.articleText;
+      this.aricleAuthorName = User.topic.authorName;
+      this.aricleAuthorSurName = User.topic.authorSurname;
+      this.aricleAuthorUserName = User.topic.authorUsername;
+      this.articleName = User.topic.articleName;
+      // console.log('ArticleText  ', this.articleText);
+      return this.New = true;
+    }
   }
 
 }
