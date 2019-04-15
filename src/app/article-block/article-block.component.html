@@ -2,8 +2,13 @@
   <div *ngIf="ViewTopicText()" style="padding-left: 20px;height: 100%; padding-bottom: 20px;">
     <h3>{{articleName}}</h3>
     <h5>Автор: {{aricleAuthorName}} {{aricleAuthorSurName}}</h5>
-    {{articleText}}
+
+    <div class="form-group">
+      <textarea class="form-control autosize" rows="8" >{{articleText}}</textarea>
+    </div>
+
+
+
 
     <!-- <input style="width: auto;" *ngIf="isInput" value="{{articleText}}"/>
     <textarea *ngIf="isInput" class="form-control" id="exampleFormControlTextarea1" rows="100" (mouseleave)="input('exit')">{{articleText}}</textarea> -->
-  </div>

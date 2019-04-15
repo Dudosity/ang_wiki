@@ -1,0 +1,6 @@
+textarea {
+  box-sizing: border-box;
+  max-height: 160px;
+min-height: 38px;
+  overflow-x: hidden;
+}
