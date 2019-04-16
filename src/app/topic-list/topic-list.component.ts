@@ -38,14 +38,16 @@ export class TopicListComponent implements OnInit {
   id = 0;
   treeControl = new NestedTreeControl<FoodNode>(node => node.children);
   dataSource = new MatTreeNestedDataSource();
-  article = {
+  itemConfig = {
     headers: {
       Authorization: ''
     }
   };
   company;
-  visibility: boolean[] = [];
+  ItemData;
 
+  visibility: boolean[] = [];
+  VisibleAddInput: any;
   ngOnInit() {
     console.log(JSON.stringify(User.data));
     this.company = {
@@ -55,6 +57,10 @@ export class TopicListComponent implements OnInit {
       threads: null
     };
     this.dataSource.data = this.parse(User.data);
+    this.ItemData = {
+      title: '',
+      thread:'',
+    };
   }
   hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
 
@@ -63,16 +69,19 @@ export class TopicListComponent implements OnInit {
     const item: any = [];
     for (const comp of json[0].company) {
       const compElement: any = {
-        type: 'Thread',
+        type: 'Company',
         elementId: this.id ++,
+        subItem:'Thread',
         name: comp.title,
         children: []
       };
       item.push(compElement);
       for (const thread of comp.threads) {
         const threadElement: any = {
-          type: 'Article',
+          type: 'Thread',
+          subItem: 'Article',
           elementId: this.id ++,
+          itemId: thread.id,
           name: thread.title,
           children: []
         };
@@ -87,7 +96,7 @@ export class TopicListComponent implements OnInit {
                 ]
               .children.indexOf(threadElement)
             ].children.push({
-            // type: 'Article',
+            type: 'Article',
             elementId: this.id ++,
             name: art.title,
             id: art.id});
@@ -135,17 +144,21 @@ export class TopicListComponent implements OnInit {
 
 
   ViewTopic(id: any) {
-    this.article.headers.Authorization = User.token;
-    this.topics.GetArticles( id, this.article).subscribe(
+    this.itemConfig.headers.Authorization = User.token;
+    this.topics.GetArticles( id, this.itemConfig).subscribe(
     response => {
       User.topic = {
+        threadId: response.thread,
+        articleId: response.id,
         articleText: response.desc,
         articleName: response.title,
         authorId: response.author.id,
         authorUsername: response.author.username,
         authorName: response.author.profile[0].name,
         authorSurname: response.author.profile[0].surname
-      };
+      }
+      User.NewTopic = true;
+      ;
 
       console.log('Ответ', User.topic.authorName);
     },
@@ -172,4 +185,26 @@ export class TopicListComponent implements OnInit {
   }
 
 
+  addItemBy(type: any, id: any) {
+    this.itemConfig.headers.Authorization = User.token;
+    this.ItemData.thread = id;
+    switch (type) {
+      case  'Article':{
+      this.topics.AddArticle(this.ItemData, this.itemConfig).subscribe(
+        response => {
+          console.log('addArticle' , response);
+          this.topics.ShowTopic();
+          window.location.reload();
+        },
+        error => console.log(error)
+      );
+
+
+      }
+      case 'Thread':{
+
+
+      }
+    }
+  }
 }

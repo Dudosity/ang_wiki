@@ -8,19 +8,35 @@
 
   <!-- This is the tree node template for leaf nodes -->
   <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
-    <li class="mat-tree-node TreeAngList rounded" (click)="ViewTopic(node.id)" (mouseenter)="visibility[node.elementId] = false;" (mouseleave)="visibility[node.elementId] = true;">
+    <div class="container">
+    <li class="mat-tree-node TreeAngList rounded row" (click)="ViewTopic(node.id)" (mouseenter)="visibility[node.elementId] = false;" (mouseleave)="visibility[node.elementId] = true;">
       <!-- use a disabled button to provide padding for tree leaf -->
+
       <button mat-icon-button disabled></button>
-      <div >{{node.name}}
-        <i class="material-icons md-18" style="font-size: 15px; vertical-align: middle;cursor: pointer;opacity: 0.7;" [ngClass]="{invisible: visibility[node.elementId]}">
+      <div >
+        {{node.name}}
+      </div>
+      <i *ngIf="node.type != 'Article'&& VisibleAddInput != node.elementId" (click)="VisibleAddInput = node.elementId" class="material-icons md-18" style="font-size: 15px; vertical-align: middle;cursor: pointer;opacity: 0.7;" [ngClass]="{invisible: visibility[node.elementId]}">
         add_circle
       </i>
-      </div>
-
-
+      <i *ngIf="node.type != 'Article' && VisibleAddInput == node.elementId" class="material-icons" (click)="VisibleAddInput = -1" style="font-size: 15px;vertical-align: middle;cursor: pointer;opacity: 0.7;" [ngClass]="{invisible: visibility[node.elementId]}">
+        remove_circle
+      </i>
 
     </li>
+      <li class="row">
+    <div class="input-group mb-3" *ngIf="VisibleAddInput == node.elementId" style="padding-left: 10px; padding-right: 10px">
+      <input [(ngModel)]="ItemData.title" type="text" class="form-control" placeholder="Add {{node.subItem}}" aria-describedby="button-addon">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="submit" (click)="addItemBy(node.subItem, node.itemId)">Кнопка</button>
+      </div>
+    </div>
+      </li>
+    </div>
   </mat-tree-node>
+
+
+
   <!-- This is the tree node template for expandable nodes -->
   <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
     <li>
@@ -34,10 +50,25 @@
         <div>
         {{node.name}}
         </div>
-        <i class="material-icons" style="font-size: 15px;vertical-align: middle;cursor: pointer;opacity: 0.7;" [ngClass]="{invisible: visibility[node.elementId]}">
+
+
+        <i *ngIf="VisibleAddInput != node.elementId" class="material-icons" (click)="VisibleAddInput = node.elementId" style="font-size: 15px;vertical-align: middle;cursor: pointer;opacity: 0.7;" [ngClass]="{invisible: visibility[node.elementId]}">
           add_circle
         </i>
+        <i *ngIf="VisibleAddInput == node.elementId" class="material-icons" (click)="VisibleAddInput = -1" style="font-size: 15px;vertical-align: middle;cursor: pointer;opacity: 0.7;" [ngClass]="{invisible: visibility[node.elementId]}">
+          remove_circle
+        </i>
+
+
       </div>
+
+        <div class="input-group mb-3" *ngIf="VisibleAddInput == node.elementId" style="padding-left: 10px; padding-right: 10px">
+          <input [(ngModel)]="ItemData.title"  type="text" class="form-control" placeholder="Add {{node.subItem}}"  aria-describedby="button-addon">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit" (click)="addItemBy(node.subItem, node.itemId)">Кнопка</button>
+          </div>
+        </div>
+
       <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
 
           <ng-container matTreeNodeOutlet ></ng-container>

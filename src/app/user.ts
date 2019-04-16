@@ -6,7 +6,9 @@ export class User {
     authorId: '',
     authorUsername: '',
     authorName: '',
-    authorSurname: ''
+    authorSurname: '',
+    articleId:'',
+    threadId:''
   };
   static NewTopic = false;
   static userId: any;
@@ -14,4 +16,5 @@ export class User {
   static SuccessLogin: boolean;
   static data: any;
   static HideTopic = false;
+
 }

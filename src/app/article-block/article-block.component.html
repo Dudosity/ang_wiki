@@ -6,14 +6,13 @@
 
     <angular-editor [(ngModel)]="articleText" [config]="config" style="border: 0;"></angular-editor>
     <div class="float-right" style="padding-top: 5px; padding-bottom: 10px">
-    <button type="button" class="btn btn-primary">Add</button>
+    <button type="button" class="btn btn-primary" (click)="UpdateArticle()">Add</button>
     <button type="button" class="btn btn-secondary">Cancel</button>
     </div>
-    <!-- <h5 class="html-header">HTML Output</h5>
+    <h5 class="html-header">HTML Output</h5>
     <div class="html">
       {{articleText}}
-    </div> -->
-
+    </div>
   </div>
 
     <!-- <input style="width: auto;" *ngIf="isInput" value="{{articleText}}"/>

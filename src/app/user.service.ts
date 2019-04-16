@@ -36,6 +36,18 @@ export class UserService {
 
     return  this.http.post('http://127.0.0.1:8000/companies/', userData );
   }
+  AddThread(userData): Observable<any> {
+
+    return  this.http.post('http://127.0.0.1:8000/companies/', userData );
+  }
+  AddArticle(userData, userToken): Observable<any> {
+
+    return  this.http.post('http://127.0.0.1:8000/article_create/', userData, userToken );
+  }
+  UpdateArticle(id, userData, userToken): Observable<any> {
+
+    return  this.http.put('http://127.0.0.1:8000/article_create/' + id + '/', userData, userToken );
+  }
   ShowTopic() {
     this.header.headers.Authorization = User.token;
     console.log(User.token);
