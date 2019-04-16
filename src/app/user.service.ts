@@ -28,9 +28,9 @@ export class UserService {
 
     return  this.http.get('http://127.0.0.1:8000/user/', userData);
   }
-  GetArticles(userData): Observable<any> {
+  GetArticles(userData, userToken): Observable<any> {
     User.NewTopic = true;
-    return  this.http.get('http://127.0.0.1:8000/articles/' + userData + '/');
+    return  this.http.get('http://127.0.0.1:8000/articles/'+ userData + '/',userToken );
   }
   AddCompany(userData): Observable<any> {
 

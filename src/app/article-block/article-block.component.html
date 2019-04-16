@@ -1,11 +1,11 @@
 
-  <div *ngIf="ViewTopicText()" style="padding-left: 20px;height: 100%; padding-bottom: 20px;padding-right: 20px;">
+  <div *ngIf="ViewTopicText()" style="padding-left: 20px;height: 85vh; padding-bottom: 20px;padding-right: 20px;">
     <h3>{{articleName}}</h3>
     <h5>Автор: {{aricleAuthorName}} {{aricleAuthorSurName}}</h5>
 
 
-    <angular-editor [(ngModel)]="articleText" [config]="config"></angular-editor>
-    <div class="float-right" style="padding-top: 5px">
+    <angular-editor [(ngModel)]="articleText" [config]="config" style="border: 0;"></angular-editor>
+    <div class="float-right" style="padding-top: 5px; padding-bottom: 10px">
     <button type="button" class="btn btn-primary">Add</button>
     <button type="button" class="btn btn-secondary">Cancel</button>
     </div>

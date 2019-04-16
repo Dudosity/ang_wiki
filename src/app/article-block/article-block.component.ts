@@ -16,7 +16,7 @@ export class ArticleBlockComponent implements OnInit {
   config: AngularEditorConfig = {
     editable: true,
     spellcheck: true,
-    height: '15rem',
+    height: '60vh',
     minHeight: '5rem',
     placeholder: 'Enter text here...',
     translate: 'no',

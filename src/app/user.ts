@@ -10,7 +10,7 @@ export class User {
   };
   static NewTopic = false;
   static userId: any;
-  static token: string;
+  static token: any;
   static SuccessLogin: boolean;
   static data: any;
   static HideTopic = false;

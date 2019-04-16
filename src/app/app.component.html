@@ -8,30 +8,24 @@
 
 <div class="container-fluid">
 <div class="row" *ngIf="LetLogin() && getData() != null" >
-  <div *ngIf="!HideTopic()" class="col-3 sidebar" style="padding-left: 0px">
+  <div *ngIf="!HideTopic()" class="col-3 sidebar" style="padding-left: 0px;height: 90vh;">
     <app-topic-list *ngIf=" LetLogin() && getData() != null " style="padding-right: 0px; margin-right: 0px;"><div class="spinner-border" role="status">
       <span class="sr-only">Loading...</span>
     </div></app-topic-list>
   </div>
-  <div *ngIf="!HideTopic()" class="col-9 shadow" style="min-height: 100vh; padding-left: 0px; padding-right: 0px;">
+  <div class="col shadow" style="min-height: 80vh; padding-left: 0px; padding-right: 0px;">
     <app-article-block *ngIf="LetLogin() && getData() != null "><div class="spinner-border" role="status">
       <span class="sr-only">Loading...</span>
     </div></app-article-block>
 
-  </div>
-  <div *ngIf="HideTopic()" class="col-12 shadow" style="min-height: 100vh; padding-left: 0px; padding-right: 0px;">
-    <app-article-block *ngIf="LetLogin() && getData() != null "><div class="spinner-border" role="status">
-      <span class="sr-only">Loading...</span>
-    </div></app-article-block>
 
   </div>
 
-</div>
 
 </div>
-<div>
 
 </div>
 <app-footer><div class="spinner-border" role="status">
   <span class="sr-only">Loading...</span>
 </div></app-footer>
+

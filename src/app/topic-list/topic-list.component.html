@@ -1,45 +1,10 @@
-<!--
-<div class="container sidebar overflow-auto " style="padding-right: 0px; padding-top: 2px" >
-  <ul style="padding-left: 5px; padding-right: 0px">
-    <li class="text-break parent"  *ngFor="let comp of topic[0].company" name="company" style="alignment: left; margin-left: 0px; padding-left: 0px; padding-right: 0
-; margin-right: 5px">
-      <div class="w-auto rounded-lg list-itemx border">{{comp.title}}</div>
-      <ul >
-        <li class="text-break parent " name="thread" *ngFor="let th of comp.threads">
-          <div class="list-item border">
-            {{th.title}}
-          </div>
-          <ul >
-            <li style="font-size: smaller;" ngClass="{invisible: visibility;}"  class="text-break" *ngFor="let art of th.articles">
-              <div class="list-item border ">
-                {{art.title}}
-              </div>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</div>
--->
 
-
-<!--
-  <div class="col-lg-12 container" style="background-color: rgba(106, 102, 173, 0.17); padding-left: 0px; padding-right: 0px;">
-    <div class="input-group" style="padding-top: 0px;" >
-      <input  [(ngModel)]="company.title" type="text" class="form-control" style="opacity: 0.9; height: auto;" placeholder="Add company">
-      <span class="input-group-btn layout-align-center">
-        <button mat-raised-button class="btn-sm" type="submit" style="height: 100%;" (click)="addCompany()"><i class="material-icons" style="vertical-align: middle;">
-add_circle
-</i></button>
-      </span>
-    </div>
-  </div> -->
-
-
-<p class="font-weight-normal rounded-bottom text-muted text-monospace" style="margin-bottom: 0px; margin-top: 10px;margin-left: 10px;">
+<div class="card square topic-tree scrollbar-ripe-malinka thin" style="background-color: rgba(23,149,255,0); border: 0px; padding-top: 10px;">
+  <div class="card-body" style="padding: 0px;">
+<p class="font-weight-normal rounded-bottom text-muted text-monospace" style="margin-bottom: 0px; margin-left: 10px; padding-top: 0px;">
   Article tree</p>
-<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree rounded-bottom" style=" background-color: rgba(106,102,173,0); padding-top: 0px">
+
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl"  class="example-tree rounded-bottom" style=" background-color: rgba(106,102,173,0); padding-top: 0px">
 
   <!-- This is the tree node template for leaf nodes -->
   <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
@@ -84,3 +49,5 @@ add_circle
     </li>
   </mat-nested-tree-node>
 </mat-tree>
+</div>
+</div>

@@ -38,7 +38,11 @@ export class TopicListComponent implements OnInit {
   id = 0;
   treeControl = new NestedTreeControl<FoodNode>(node => node.children);
   dataSource = new MatTreeNestedDataSource();
-
+  article = {
+    headers: {
+      Authorization: ''
+    }
+  };
   company;
   visibility: boolean[] = [];
 
@@ -131,7 +135,8 @@ export class TopicListComponent implements OnInit {
 
 
   ViewTopic(id: any) {
-    this.topics.GetArticles(id).subscribe(
+    this.article.headers.Authorization = User.token;
+    this.topics.GetArticles( id, this.article).subscribe(
     response => {
       User.topic = {
         articleText: response.desc,

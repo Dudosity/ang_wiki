@@ -10,6 +10,37 @@
   list-style-type: none;
 }
 .TreeAngList:hover{
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0);
   cursor: pointer;
+}
+
+
+.scrollbar-ripe-malinka::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.1);
+  background-color: rgba(245, 245, 245, 0);
+  border-radius: 0px; }
+
+.scrollbar-ripe-malinka::-webkit-scrollbar {
+  width: 12px;
+  background-color: rgba(245, 245, 245, 0); }
+
+.scrollbar-ripe-malinka::-webkit-scrollbar-thumb {
+  border-radius: 0px;
+  -webkit-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0);
+  background-image: -webkit-linear-gradient(330deg, #89f9fb 0%, #78edf5 100%);
+  background-image: linear-gradient(120deg, #40eefb 0%, #87f5ea 100%); }
+
+.square::-webkit-scrollbar-track {
+  border-radius: 0 !important; }
+
+.square::-webkit-scrollbar-thumb {
+  border-radius: 0 !important; }
+
+.topic-tree {
+  position: relative;
+  overflow-y: scroll;
+  height: 90vh; }
+
+.thin::-webkit-scrollbar {
+  width: 2px;
 }
