@@ -89,6 +89,7 @@ export class TopicListComponent implements OnInit {
             id: art.id});
         }
       }
+
     }
 
     for(var i = 0; i < this.id; i++){
@@ -124,6 +125,7 @@ export class TopicListComponent implements OnInit {
   }
      */
     console.log('ITEM', item);
+    this.dataSource.data = item;
     return item;
   }
 
@@ -156,7 +158,7 @@ export class TopicListComponent implements OnInit {
       response => {
         console.log('Все огонь', response);
         this.topics.ShowTopic();
-        this.ngOnInit();
+        setTimeout(this.parse(User.data), 1500);
         window.location.reload();
 
       },

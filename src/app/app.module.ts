@@ -19,6 +19,7 @@ import {CookieService} from 'ngx-cookie-service';
 import {MatDividerModule} from '@angular/material/divider';
 import { FooterComponent } from './footer/footer.component';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
+import {AngularEditorConfig, AngularEditorModule} from '@kolkov/angular-editor';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatTreeModule, MatIconModule, MatButtonModule, MatIconModule, MatDividerModule, MDBBootstrapModule
+    MatTreeModule, MatIconModule, MatButtonModule, MatIconModule, MatDividerModule, MDBBootstrapModule, AngularEditorModule
   ],
   providers: [UserService, CookieService],
   bootstrap: [AppComponent]
